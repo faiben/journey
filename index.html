@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey - An Animated Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1494&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .trailer-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            width: 2px;
+            height: 20px;
+            background-color: #f59e0b;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item:not(:last-child)::after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <i class="fas fa-ship text-yellow-400 text-2xl"></i>
+                <span class="text-xl font-bold">The Journey</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-yellow-400 transition">About</a>
+                <a href="#characters" class="hover:text-yellow-400 transition">Characters</a>
+                <a href="#story" class="hover:text-yellow-400 transition">Story</a>
+                <a href="#game" class="hover:text-yellow-400 transition">Video Game</a>
+                <a href="#objectives" class="hover:text-yellow-400 transition">Objectives</a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-4 py-2">
+            <a href="#about" class="block py-2 hover:text-yellow-400 transition">About</a>
+            <a href="#characters" class="block py-2 hover:text-yellow-400 transition">Characters</a>
+            <a href="#story" class="block py-2 hover:text-yellow-400 transition">Story</a>
+            <a href="#game" class="block py-2 hover:text-yellow-400 transition">Video Game</a>
+            <a href="#objectives" class="block py-2 hover:text-yellow-400 transition">Objectives</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center justify-center text-white pt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">The Journey</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-8">A story about courage and collaboration</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10">An epic animated adventure featuring six children from different cultures united by a common goal to save their parents.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300 flex items-center justify-center trailer-btn">
+                    Watch Trailer <i class="fas fa-play ml-2 transition duration-300"></i>
+                </button>
+                <button class="border-2 border-white hover:bg-white hover:text-gray-900 font-bold py-3 px-8 rounded-full transition duration-300">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About The Project</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1608889825101-1d42a5edd984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Children on an adventure" class="rounded-lg shadow-xl w-full">
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6">A Bundle of Adventure</h3>
+                    <p class="text-gray-700 mb-6">The project is a unique bundle containing a high-quality animated feature film and an immersive video game that continues the story.</p>
+                    <p class="text-gray-700 mb-6">Set in the late 15th century, this cross-cultural adventure follows six children from different backgrounds who must work together to overcome incredible challenges and rescue their parents from a ruthless pirate.</p>
+                    <p class="text-gray-700 mb-8">With universal themes of courage, collaboration, and the unconditional love between children and their parents, this production is designed to resonate with audiences worldwide.</p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-film text-yellow-500 mr-2"></i>
+                            <span>Animated Film</span>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-gamepad text-yellow-500 mr-2"></i>
+                            <span>Video Game</span>
+                        </div>
+                        <div class="bg-gray-100 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-globe text-yellow-500 mr-2"></i>
+                            <span>Cross-Cultural</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Characters Section -->
+    <section id="characters" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet The Characters</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Character 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg character-card transition duration-300">
+                    <div class="h-64 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-child text-8xl text-blue-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Aminah (9)</h3>
+                        <p class="text-gray-600 mb-4">From the Arabian Peninsula</p>
+                        <p class="text-gray-700">The youngest of the group, Aminah's quick thinking and knowledge of desert survival prove invaluable during their journey.</p>
+                    </div>
+                </div>
+                
+                <!-- Character 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg character-card transition duration-300">
+                    <div class="h-64 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-child text-8xl text-green-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ravi (12)</h3>
+                        <p class="text-gray-600 mb-4">From India</p>
+                        <p class="text-gray-700">A natural leader with a knack for strategy, Ravi helps the group navigate through difficult situations.</p>
+                    </div>
+                </div>
+                
+                <!-- Character 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg character-card transition duration-300">
+                    <div class="h-64 bg-red-100 flex items-center justify-center">
+                        <i class="fas fa-child text-8xl text-red-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fatima (14)</h3>
+                        <p class="text-gray-600 mb-4">From East Africa</p>
+                        <p class="text-gray-700">The oldest and most physically strong, Fatima protects the group from dangers in the African wilderness.</p>
+                    </div>
+                </div>
+                
+                <!-- Character 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg character-card transition duration-300">
+                    <div class="h-64 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-child text-8xl text-purple-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mei Lin (11)</h3>
+                        <p class="text-gray-600 mb-4">From Malaysia</p>
+                        <p class="text-gray-700">Resourceful and observant, Mei Lin's knowledge of plants and herbs helps the group when they're injured or hungry.</p>
+                    </div>
+                </div>
+                
+                <!-- Character 5 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg character-card transition duration-300">
+                    <div class="h-64 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-child text-8xl text-yellow-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Budi (10)</h3>
+                        <p class="text-gray-600 mb-4">From Indonesia</p>
+                        <p class="text-gray-700">Cheerful and optimistic, Budi keeps the group's spirits up during their most challenging moments.</p>
+                    </div>
+                </div>
+                
+                <!-- Character 6 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg character-card transition duration-300">
+                    <div class="h-64 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-child text-8xl text-indigo-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Yusuf (13)</h3>
+                        <p class="text-gray-600 mb-4">From Turkey</p>
+                        <p class="text-gray-700">With his knowledge of sailing and navigation, Yusuf helps the group cross the sea safely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Section -->
+    <section id="story" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Story</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item mb-16 relative">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0 text-right">
+                                <h3 class="text-xl font-bold mb-2">The Capture</h3>
+                                <p class="text-gray-700">In the late 15th century, the vicious pirate Crulo intercepts pilgrim boats heading to Mecca, capturing parents and children.</p>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -ml-4 w-8 h-8 rounded-full bg-yellow-500 border-4 border-white shadow-md flex items-center justify-center">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item mb-16 relative">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-8">
+                                <h3 class="text-xl font-bold mb-2">The Escape</h3>
+                                <p class="text-gray-700">The six children from different cultures escape from their guarded camp on Masirah Island, beginning their perilous journey.</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -ml-4 w-8 h-8 rounded-full bg-yellow-500 border-4 border-white shadow-md flex items-center justify-center">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item mb-16 relative">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0 text-right">
+                                <h3 class="text-xl font-bold mb-2">Sea Crossing</h3>
+                                <p class="text-gray-700">The children cross the dangerous sea, facing storms and pirates, relying on Yusuf's sailing knowledge to survive.</p>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -ml-4 w-8 h-8 rounded-full bg-yellow-500 border-4 border-white shadow-md flex items-center justify-center">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item mb-16 relative">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-8">
+                                <h3 class="text-xl font-bold mb-2">Yemeni Desert</h3>
+                                <p class="text-gray-700">Aminah's desert survival skills become crucial as the group traverses the harsh Yemeni desert, facing thirst and exhaustion.</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -ml-4 w-8 h-8 rounded-full bg-yellow-500 border-4 border-white shadow-md flex items-center justify-center">
+                            <span class="text-white font-bold">4</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 5 -->
+                    <div class="timeline-item mb-16 relative">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0 text-right">
+                                <h3 class="text-xl font-bold mb-2">African Wilderness</h3>
+                                <p class="text-gray-700">Fatima and Mei Lin lead the group through the dangerous African wilderness, facing wild animals and finding food.</p>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -ml-4 w-8 h-8 rounded-full bg-yellow-500 border-4 border-white shadow-md flex items-center justify-center">
+                            <span class="text-white font-bold">5</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 6 -->
+                    <div class="timeline-item relative">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-8">
+                                <h3 class="text-xl font-bold mb-2">Final Confrontation</h3>
+                                <p class="text-gray-700">The children use all their skills and work together to confront Crulo and his crew, freeing their parents and setting an example of courage and collaboration.</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-0 left-1/2 -ml-4 w-8 h-8 rounded-full bg-yellow-500 border-4 border-white shadow-md flex items-center justify-center">
+                            <span class="text-white font-bold">6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Game Section -->
+    <section id="game" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Video Game</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6">Continue The Adventure</h3>
+                    <p class="mb-6">The video game extends the film's narrative, allowing players to experience the adventure interactively.</p>
+                    <p class="mb-6">Players can choose to play as any of the six main characters, each with unique abilities that must be used strategically to overcome challenges.</p>
+                    <p class="mb-8">The game features puzzle-solving, exploration, and action elements, set in beautifully rendered environments from the film.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <i class="fas fa-users text-yellow-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold mb-1">Multi-character</h4>
+                            <p class="text-sm text-gray-400">Play as all six characters</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <i class="fas fa-puzzle-piece text-yellow-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold mb-1">Puzzle Solving</h4>
+                            <p class="text-sm text-gray-400">Team-based challenges</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <i class="fas fa-map-marked-alt text-yellow-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold mb-1">Exploration</h4>
+                            <p class="text-sm text-gray-400">Beautiful environments</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <i class="fas fa-trophy text-yellow-500 text-2xl mb-2"></i>
+                            <h4 class="font-bold mb-1">Achievements</h4>
+                            <p class="text-sm text-gray-400">Unlock special content</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
+                        <div class="h-80 bg-indigo-900 flex items-center justify-center">
+                            <i class="fas fa-gamepad text-8xl text-indigo-400"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-4">Coming Soon to All Platforms</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="bg-gray-700 px-3 py-1 rounded-full text-sm">PC</div>
+                                <div class="bg-gray-700 px-3 py-1 rounded-full text-sm">PlayStation</div>
+                                <div class="bg-gray-700 px-3 py-1 rounded-full text-sm">Xbox</div>
+                                <div class="bg-gray-700 px-3 py-1 rounded-full text-sm">Nintendo Switch</div>
+                                <div class="bg-gray-700 px-3 py-1 rounded-full text-sm">Mobile</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Objectives Section -->
+    <section id="objectives" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Project Objectives</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Creating an Ethical Alternative</h3>
+                    <p class="text-gray-700 text-center">The main objective of the project is the creation of an ethical alternative in film and video game production that promotes positive values and cultural understanding.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Objective 1 -->
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-friends text-yellow-500 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-3">Establish Characters</h4>
+                        <p class="text-gray-700">Create beloved characters from diverse backgrounds that can be used for future productions, building a lasting franchise.</p>
+                    </div>
+                    
+                    <!-- Objective 2 -->
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-blue-500 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-3">Stimulate Talent</h4>
+                        <p class="text-gray-700">Develop local talents across all production areas including animation, writing, directing, and marketing.</p>
+                    </div>
+                    
+                    <!-- Objective 3 -->
+                    <div class="bg-gray-100 p-6 rounded-xl text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-network-wired text-green-500 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-3">Distribution Channels</h4>
+                        <p class="text-gray-700">Establish local distribution channels to ensure the project reaches its intended audiences effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4">Stay Updated</h2>
+                <p class="text-gray-700 mb-6">Sign up for updates on the film's release, game launch, and special events.</p>
+                
+                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-lg transition duration-300">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-ship text-yellow-400 text-2xl"></i>
+                    <span class="text-xl font-bold">The Journey</span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between">
+                    <div class="mb-6 md:mb-0">
+                        <p class="text-gray-400">&copy; 2023 The Journey. All rights reserved.</p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Calculate position with offset for fixed header
+                    const headerHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.timeline-item, .character-card').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Faibenmek/https-huggingface-co-faibenmek" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
